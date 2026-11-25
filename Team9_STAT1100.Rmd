@@ -15,6 +15,8 @@ heart_data <- read.csv("heart.csv")
 head(heart_data)
 dim(heart_data)
 
+##Remove duplicates
+
 write.csv(heart_data, "heart_original.csv",
           row.names = FALSE)
 
@@ -28,3 +30,16 @@ original_rows
 cleaned_rows
 
 original_rows - cleaned_rows
+
+## Change target to Factor
+
+heart_data$target <- factor(
+  heart_data$target,
+  levels = c(0, 1),
+  labels = c("No_Disease", "Disease")
+)
+
+table(heart_data$target)
+
+write.csv(heart_data, "heart_cleaned.csv",
+          row.names = FALSE)
