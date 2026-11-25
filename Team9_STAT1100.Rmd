@@ -1,0 +1,30 @@
+---
+title: "Team9_STAT1100"
+author: "Masahito Nakamura"
+date: "2026-11-25"
+output: pdf_document
+---
+## Data Cleaning
+
+library(caret)
+library(rpart)
+library(rpart.plot)
+
+heart_data <- read.csv("heart.csv")
+
+head(heart_data)
+dim(heart_data)
+
+write.csv(heart_data, "heart_original.csv",
+          row.names = FALSE)
+
+original_rows <- nrow(heart_data)
+
+heart_data <- unique(heart_data)
+
+cleaned_rows <- nrow(heart_data)
+
+original_rows
+cleaned_rows
+
+original_rows - cleaned_rows
