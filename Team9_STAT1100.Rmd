@@ -43,3 +43,30 @@ table(heart_data$target)
 
 write.csv(heart_data, "heart_cleaned.csv",
           row.names = FALSE)
+          
+##  Data Splitting
+
+set.seed(123)
+
+train_index <- createDataPartition(
+  heart_data$target,
+  p = 0.80,
+  list = FALSE
+)
+
+train_data <- heart_data[train_index, ]
+test_data <- heart_data[-train_index, ]
+
+nrow(train_data)
+nrow(test_data)
+
+table(train_data$target)
+table(test_data$target)
+
+## Save as CSV
+
+write.csv(train_data, "train_data.csv",
+          row.names = FALSE)
+
+write.csv(test_data, "test_data.csv",
+          row.names = FALSE)
