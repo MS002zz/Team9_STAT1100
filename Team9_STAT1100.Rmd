@@ -1,6 +1,6 @@
 ---
 title: "Team9_STAT1100"
-author: "Masahito Nakamura"
+author: "Masahito Nakamura, Mohadesah Ali"
 date: "2026-11-25"
 output: pdf_document
 ---
@@ -8,7 +8,7 @@ output: pdf_document
 ## Team Members & GitHub Repository
 
 Masahito Nakamura (100433431)
-Name (Student number)
+Mohadesah Ali (100453439)
 
 GitHub Repository: [Team 9 Repository]()
 
@@ -107,7 +107,9 @@ plot(tuned_tree,
 ```
 
 ## Final Decision Tree
-
+```{r}
+rpart.plot(tuned_tree$finalModel)
+```
 ## Testing Data
 
 ## Confusion Matrix
