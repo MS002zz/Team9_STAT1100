@@ -4,22 +4,30 @@ author: "Masahito Nakamura"
 date: "2026-11-25"
 output: pdf_document
 ---
+
+## Team Members & GitHub Repository
+
+Masahito Nakamura (100433431)
+Name (Student number)
+
+GitHub Repository: [Team 9 Repository]()
+
 ## Data Cleaning
 
+```{r}
 library(caret)
 library(rpart)
 library(rpart.plot)
 
-heart_data <- read.csv("heart.csv")
+heart_data <- read.csv("heart_original.csv")
 
 head(heart_data)
 dim(heart_data)
+```
 
-##Remove duplicates
+## Remove Duplicates
 
-write.csv(heart_data, "heart_original.csv",
-          row.names = FALSE)
-
+```{r}
 original_rows <- nrow(heart_data)
 
 heart_data <- unique(heart_data)
@@ -31,8 +39,13 @@ cleaned_rows
 
 original_rows - cleaned_rows
 
-## Change target to Factor
+write.csv(heart_data, "heart_cleaned.csv",
+          row.names = FALSE)
+```
 
+## Change Target to Factor
+
+```{r}
 heart_data$target <- factor(
   heart_data$target,
   levels = c(0, 1),
@@ -40,12 +53,10 @@ heart_data$target <- factor(
 )
 
 table(heart_data$target)
+```
+## Data Splitting
 
-write.csv(heart_data, "heart_cleaned.csv",
-          row.names = FALSE)
-          
-##  Data Splitting
-
+```{r}
 set.seed(123)
 
 train_index <- createDataPartition(
@@ -62,11 +73,43 @@ nrow(test_data)
 
 table(train_data$target)
 table(test_data$target)
+```
 
 ## Save as CSV
 
+```{r}
 write.csv(train_data, "train_data.csv",
           row.names = FALSE)
 
 write.csv(test_data, "test_data.csv",
           row.names = FALSE)
+```
+          
+## 10-Fold Cross-Validation
+```{r}
+cv_settings <- trainControl(
+  method = "cv",
+  number = 10
+)
+
+tuned_tree <- train(
+  target ~ .,
+  data = train_data,
+  method = "rpart",
+  trControl = cv_settings,
+  tuneLength = 10
+)
+```
+## Accuracy vs.CP
+
+## Final Decision Tree
+
+## Testing Data
+
+## Confusion Matrix
+
+## Test Accuracy
+
+## Sensitivity & Specificity
+
+## Conclusion
