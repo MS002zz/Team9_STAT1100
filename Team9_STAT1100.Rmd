@@ -110,6 +110,7 @@ plot(tuned_tree,
 ```{r}
 rpart.plot(tuned_tree$finalModel)
 ```
+Explanation in progress...
 
 ## Testing Data
 ```{r}
@@ -129,5 +130,11 @@ test_accuracy<- correct_counts/total_counts
 cat("\nFinal Calculated Test Accuracy Rate:", round(test_accuracy*100,2), "%\n")
 ```
 ## Sensitivity & Specificity
+Sensitivity = TP/(TP+FN) = 28/(28+4) = 0.875
+Specificity = TN/(TN+FP) = 15/(15+12) = 0.556
+
+Clinical Interpretation: in progress
+
+---
 
 ## Conclusion
