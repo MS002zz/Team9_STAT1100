@@ -110,12 +110,20 @@ plot(tuned_tree,
 ```{r}
 rpart.plot(tuned_tree$finalModel)
 ```
+
 ## Testing Data
-
+```{r}
+predictions<- predict(tuned_tree, newdata = test_data)
+```
 ## Confusion Matrix
-
+```{r}
+confusion_table<- table(Actual = test_data$target, Predicted = predictions)
+print("--- Test Set Confusion Matrix Table ---")
+print(confusion_table)
+```
 ## Test Accuracy
-
+```{r}
+```
 ## Sensitivity & Specificity
 
 ## Conclusion
