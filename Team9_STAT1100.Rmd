@@ -101,6 +101,10 @@ tuned_tree <- train(
 )
 ```
 ## Accuracy vs.CP
+```{r}
+plot(tuned_tree,
+     main = "Accuracy vs. Complexity Parameter")
+```
 
 ## Final Decision Tree
 
